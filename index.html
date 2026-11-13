@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Экспресс-самодиагностика «Кто управляет вашим временем?»</title>
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="no-referrer">
+<meta name="description" content="Экспресс-самодиагностика управления рабочим временем. Результаты рассчитываются локально и не сохраняются на сервере.">
+<link rel="stylesheet" href="./styles.css">
+<script defer src="./app.js"></script>
+</head>
+<body>
+<main class="container">
+    <div class="eyebrow">Экспресс-самодиагностика · управление временем</div>
+    <h1>Кто управляет <span class="copper">вашим временем?</span></h1>
+    <p class="subtitle">Ответьте на 7 рабочих ситуаций и оцените, насколько устойчиво вы планируете задачи, управляете нагрузкой, контролируете выполнение и сохраняете концентрацию.</p>
+    <section class="instruction">
+        <h2>Инструкция</h2>
+        <p>В каждой ситуации выберите <strong>один</strong> вариант, который лучше всего описывает ваше обычное поведение. После выбора ответа автоматически откроется следующий вопрос.</p>
+    </section>
+    <div class="progress-panel" aria-live="polite">
+        <div class="progress-top"><span>Заполнение опросника</span><span id="progressText">0 из 7</span></div>
+        <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+    </div>
+
+    <noscript><div class="subhead">Для работы опросника необходимо включить JavaScript в браузере.</div></noscript>
+
+    <form id="quizForm" novalidate autocomplete="off">
+        <div class="question-wrapper" id="questionWrapper"></div>
+
+        <div class="nav-area" id="navArea">
+            <div class="nav-buttons">
+                <button class="nav-btn nav-btn-secondary" disabled id="prevBtn" type="button">← Назад</button>
+                <button class="nav-btn result-nav-btn" id="submitBtn" type="submit" hidden>Показать результат</button>
+            </div>
+            <div class="nav-indicator">Вопрос <strong id="currentNum">1</strong> из 7</div>
+        </div>
+
+        <div class="toast inline-toast" id="formToast" role="status" aria-live="polite"></div>
+    </form>
+
+    <section class="results" id="results" aria-live="polite">
+        <div class="results-header">
+            <div class="results-title-group">
+                <h2>Ваш результат</h2>
+                <div class="profile-pill" id="profilePill">Самодиагностика</div>
+            </div>
+        </div>
+
+        <p class="dominant" id="summaryText"></p>
+
+        <div class="time-total-card">
+            <div class="time-total-main">
+                <div>
+                    <span class="time-total-label">Общий балл</span>
+                    <strong id="totalScore">0</strong>
+                    <span class="time-total-max">из 21</span>
+                </div>
+                <div class="time-total-profile" id="profileName"></div>
+            </div>
+            <div class="time-total-description" id="profileDescription"></div>
+        </div>
+
+        <h3 class="results-subtitle">Показатели по направлениям</h3>
+        <div class="skill-grid" id="skillGrid"></div>
+        <div class="secondary-result-actions">
+            <button class="retake-link" id="retakeBtn" type="button">Пройти заново</button>
+            <button class="btn download-profile-btn" id="downloadResultBtn" type="button" disabled aria-disabled="true">Скачать мой результат</button>
+        </div>
+    </section>
+</main>
+</body>
+</html>
